@@ -240,6 +240,13 @@ open class DefaultToolbarMenu(
         onItemTapped.invoke(ToolbarMenu.Item.RequestDesktop(checked))
     }
 
+    private val gptIntegrationItem = BrowserMenuImageText(
+        context.getString(R.string.browser_menu_gpt_integration),
+        R.drawable.ic_onboarding_openai,
+    ) {
+        onItemTapped.invoke(ToolbarMenu.Item.GPTIntegration)
+    }
+
     private val customizeReaderView = BrowserMenuImageText(
         label = context.getString(R.string.browser_menu_customize_reader_view),
         imageResource = R.drawable.ic_readermode_appearance,
@@ -373,6 +380,7 @@ open class DefaultToolbarMenu(
                 BrowserMenuDivider(),
                 findInPageItem,
                 desktopSiteItem,
+                gptIntegrationItem,
                 customizeReaderView.apply { visible = ::shouldShowReaderViewCustomization },
                 openInApp.apply { visible = ::shouldShowOpenInApp },
                 reportSiteIssuePlaceholder,

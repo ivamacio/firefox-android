@@ -174,6 +174,8 @@
     <string name="browser_menu_library">Library</string>
     <!-- Browser menu toggle that requests a desktop site -->
     <string name="browser_menu_desktop_site">Desktop site</string>
+    <!-- Browser menu toggle that enables GPT Integration -->
+    <string name="browser_menu_gpt_integration" translatable="false">Generate summary with AI</string>
     <!-- Browser menu toggle that adds a shortcut to the site on the device home screen. -->
     <string name="browser_menu_add_to_homescreen">Add to Home screen</string>
     <!-- Browser menu toggle that installs a Progressive Web App shortcut to the site on the device home screen. -->
@@ -355,12 +357,16 @@
     <!-- Preference linking to about page for Fenix
         The first parameter is the name of the app defined in app_name (for example: Fenix) -->
     <string name="preferences_about">About %1$s</string>
+    <!-- Preference artificial intelligence -->
+    <string name="preferences_category_artificial_intelligence" translatable="false">Artificial Intelligence</string>
     <!-- Preference for settings related to changing the default browser -->
     <string name="preferences_set_as_default_browser">Set as default browser</string>
     <!-- Preference category for advanced settings -->
     <string name="preferences_category_advanced">Advanced</string>
     <!-- Preference category for privacy and security settings -->
     <string name="preferences_category_privacy_security">Privacy and security</string>
+    <!-- Preference for gpt integration -->
+    <string name="preferences_gpt_integration" translatable="false">GPT Integration</string>
     <!-- Preference for advanced site permissions -->
     <string name="preferences_site_permissions">Site permissions</string>
     <!-- Preference for private browsing options -->
@@ -1389,6 +1395,14 @@
     <string name="onboarding_conclusion_header">Ready to open up an amazing internet?</string>
     <!-- text for the button to finish onboarding -->
     <string name="onboarding_finish">Start browsing</string>
+
+    <!-- Onboarding GPT Integration -->
+    <string name="onboarding_gpt_header" translatable="false">GPT Integration</string>
+    <string name="onboarding_gpt_description" translatable="false">In order to use GPT, you must enter a valid API Key.\nYou will be able to add the key later.\n\nCreate your key on\nhttps://platform.openai.com/account/api-keys.</string>
+    <string name="onboarding_gpt_input_hint" translatable="false">Enter your API Key</string>
+    <string name="settings_gpt_integration_description" translatable="false">In order to use GPT, you must enter a valid API Key.\n\nCreate your key on\nhttps://platform.openai.com/account/api-keys.</string>
+    <string name="settings_gpt_integration_input_hint" translatable="false">Enter your API Key</string>
+    <string name="generate_summary_header" translatable="false">The summary of your current page is:</string>
 
     <!-- Onboarding theme -->
     <!-- text for the theme picker onboarding card header -->

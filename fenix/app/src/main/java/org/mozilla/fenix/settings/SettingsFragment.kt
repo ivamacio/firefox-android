@@ -288,6 +288,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
             resources.getString(R.string.pref_key_language) -> {
                 SettingsFragmentDirections.actionSettingsFragmentToLocaleSettingsFragment()
             }
+            resources.getString(R.string.pref_key_gpt_integration) -> {
+                SettingsFragmentDirections.actionSettingsFragmentToGptIntegrationFragment()
+            }
             resources.getString(R.string.pref_key_addons) -> {
                 Addons.openAddonsInSettings.record(mozilla.components.service.glean.private.NoExtras())
                 SettingsFragmentDirections.actionSettingsFragmentToAddonsFragment()

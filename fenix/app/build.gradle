@@ -231,7 +231,10 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
-
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
         unitTests.all {
             // We keep running into memory issues when running our tests. With this config we
             // reserve more memory and also create a new process after every 80 test classes. This
@@ -677,6 +680,7 @@ dependencies {
 
     androidTestImplementation FenixDependencies.mockk_android
     testImplementation FenixDependencies.mockk
+    testImplementation 'org.json:json:20160810'
 
     // For the initial release of Glean 19, we require consumer applications to
     // depend on a separate library for unit tests. This will be removed in future releases.

@@ -141,6 +141,18 @@
     </androidx.preference.PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/preferences_category_artificial_intelligence"
+        android:key="@string/pref_key_artificial_intelligence"
+        android:layout="@layout/preference_category_no_icon_style">
+
+        <androidx.preference.Preference
+            android:key="@string/pref_key_gpt_integration"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_gpt_integration" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/preferences_category_advanced"
         android:key="@string/pref_key_advanced"
         android:layout="@layout/preference_category_no_icon_style">
