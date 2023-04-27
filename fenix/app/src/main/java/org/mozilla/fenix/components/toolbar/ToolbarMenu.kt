@@ -24,6 +24,7 @@ interface ToolbarMenu {
         object RemoveFromTopSites : Item()
         object InstallPwaToHomeScreen : Item()
         object AddToHomeScreen : Item()
+        object GPTIntegration : Item()
         data class SyncAccount(val accountState: AccountState) : Item()
         object AddonsManager : Item()
         object Quit : Item()

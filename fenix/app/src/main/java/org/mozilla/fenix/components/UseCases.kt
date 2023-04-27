@@ -27,6 +27,12 @@ import mozilla.components.feature.top.sites.TopSitesUseCases
 import mozilla.components.support.locale.LocaleManager
 import mozilla.components.support.locale.LocaleUseCases
 import org.mozilla.fenix.components.bookmarks.BookmarksUseCase
+import org.mozilla.fenix.ext.components
+import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.gptintegration.apis.GPTIntegrationApi
+import org.mozilla.fenix.gptintegration.apis.HTTPIntegrationApi
+import org.mozilla.fenix.gptintegration.usecases.GetHTTPPageBodyUseCases
+import org.mozilla.fenix.gptintegration.usecases.GetPageSummaryWithGPTUseCases
 import org.mozilla.fenix.perf.StrictModeManager
 import org.mozilla.fenix.perf.lazyMonitored
 import org.mozilla.fenix.wallpapers.WallpapersUseCases
@@ -107,6 +113,23 @@ class UseCases(
      * Use cases that provide bookmark management.
      */
     val bookmarksUseCases by lazyMonitored { BookmarksUseCase(bookmarksStorage, historyStorage) }
+
+    val getPageSummaryWithGPTUseCases by lazyMonitored {
+        GetPageSummaryWithGPTUseCases(
+            repository = GPTIntegrationApi(
+                settings = context.settings(),
+                client = context.components.core.client
+            )
+        )
+    }
+
+    val getHTTPPageBodyUseCases by lazyMonitored {
+        GetHTTPPageBodyUseCases(
+            repository = HTTPIntegrationApi(
+                client = context.components.core.client
+            )
+        )
+    }
 
     val wallpaperUseCases by lazyMonitored {
         // Required to even access context.filesDir property and to retrieve current locale

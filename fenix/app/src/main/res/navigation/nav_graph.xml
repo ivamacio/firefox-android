@@ -135,6 +135,13 @@
             app:nullable="true" />
     </action>
     <action
+        android:id="@+id/action_global_generateSummaryWithAIFragment"
+        app:destination="@id/generateSummaryWithAIFragment">
+        <argument
+            android:name="body"
+            app:argType="string" />
+    </action>
+    <action
         android:id="@+id/action_global_trackingProtectionFragment"
         app:destination="@id/trackingProtectionFragment" />
     <action
@@ -559,6 +566,13 @@
             app:argType="string"
             app:nullable="true" />
         <action
+            android:id="@+id/action_settingsFragment_to_gptIntegrationFragment"
+            app:destination="@id/gpt_integration_graph"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_settingsFragment_to_dataChoicesFragment"
             app:destination="@id/dataChoicesFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -927,6 +941,15 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
+        android:id="@+id/generateSummaryWithAIFragment"
+        android:name="org.mozilla.fenix.gptintegration.ui.GenerateSummaryWithAIFragment">
+        <argument
+            android:name="body"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
         android:id="@+id/openLinksInAppsFragment"
         android:name="org.mozilla.fenix.settings.OpenLinksInAppsFragment" />
     <fragment
@@ -1218,6 +1241,16 @@
             <argument
                 android:name="sitePermissions"
                 app:argType="mozilla.components.concept.engine.permission.SitePermissions" />
+        </fragment>
+    </navigation>
+
+    <navigation
+        android:id="@+id/gpt_integration_graph"
+        app:startDestination="@id/GPTIntegrationFragment">
+        <fragment
+            android:id="@+id/GPTIntegrationFragment"
+            android:name="org.mozilla.fenix.gptintegration.ui.GPTIntegrationFragment"
+            tools:layout="@layout/fragment_gpt_integration">
         </fragment>
     </navigation>
 

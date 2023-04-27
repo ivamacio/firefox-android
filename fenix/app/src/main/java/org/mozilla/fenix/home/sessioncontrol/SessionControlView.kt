@@ -149,6 +149,7 @@ private fun onboardingAdapterItems(
     }
     items.addAll(
         listOf(
+            AdapterItem.OnboardingGPTIntegration,
             AdapterItem.OnboardingFinish,
             AdapterItem.BottomSpacer,
         ),

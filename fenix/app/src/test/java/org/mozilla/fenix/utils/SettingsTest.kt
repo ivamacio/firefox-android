@@ -295,6 +295,20 @@ class SettingsTest {
     }
 
     @Test
+    fun shouldUpdateApiKey() {
+        val API_KEY = "API_KEY"
+        // When just created
+        // Then
+        assertTrue(settings.gptApiKey == "")
+
+        // When
+        settings.gptApiKey = API_KEY
+
+        // Then
+        assertTrue(settings.gptApiKey == API_KEY)
+    }
+
+    @Test
     fun fontSizeFactor() {
         // When just created
         // Then

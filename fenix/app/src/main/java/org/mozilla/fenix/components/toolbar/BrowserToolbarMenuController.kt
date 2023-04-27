@@ -5,9 +5,12 @@
 package org.mozilla.fenix.components.toolbar
 
 import android.content.Intent
+import android.os.Build
+import android.text.Html
 import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
+import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -388,7 +391,32 @@ class DefaultBrowserToolbarMenuController(
                         .show()
                 }
             }
+            ToolbarMenu.Item.GPTIntegration -> {
+                currentSession?.id?.let {
+                    val currentTab = browserStore.state.findTab(it)
+
+                    currentTab?.let { tab ->
+                        scope.launch {
+                            val body = activity.components.useCases.getHTTPPageBodyUseCases
+                                .invoke(url = tab.historyMetadata!!.url)
+                            navController.navigate(
+                                BrowserFragmentDirections.actionGlobalGenerateSummaryWithAIFragment(
+                                    convertHtmlToRawText(body),
+                                ),
+                            )
+                        }
+                    }
+                }
+            }
         }
+    }
+
+    private fun convertHtmlToRawText(source: String?): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            HtmlCompat.fromHtml(source ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }.toString()
     }
 
     private fun getProperUrl(currentSession: SessionState?): String? {
@@ -459,6 +487,8 @@ class DefaultBrowserToolbarMenuController(
                 Events.browserMenuAction.record(Events.BrowserMenuActionExtra("set_default_browser"))
             is ToolbarMenu.Item.RemoveFromTopSites ->
                 Events.browserMenuAction.record(Events.BrowserMenuActionExtra("remove_from_top_sites"))
+            is ToolbarMenu.Item.GPTIntegration ->
+                Events.browserMenuAction.record(Events.BrowserMenuActionExtra("generate_ai_summary"))
         }
     }
 

@@ -1167,6 +1167,18 @@ class Settings(private val appContext: Context) : PreferencesHolder {
             .apply()
     }
 
+    fun addApiKey(apiKey: String) {
+        val key = appContext.getPreferenceKey(R.string.pref_key_gpt_integration_api_key)
+        preferences.edit()
+            .putString(key, apiKey)
+            .apply()
+    }
+
+    var gptApiKey by stringPreference(
+        appContext.getPreferenceKey(R.string.pref_key_gpt_integration_api_key),
+        default = "",
+    )
+
     val searchWidgetInstalled: Boolean
         get() = 0 < preferences.getInt(
             appContext.getPreferenceKey(R.string.pref_key_search_widget_installed),
